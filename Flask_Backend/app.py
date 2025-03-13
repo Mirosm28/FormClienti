@@ -4,7 +4,6 @@ from flask import Flask, render_template, request, redirect, url_for
 import os
 app = Flask(__name__, template_folder=os.path.join(os.getcwd(), "Flask_Backend", "templates"))
 
-
 # Funzione per connettersi al database
 def connessione_db():
     return sqlite3.connect("clienti.db")
