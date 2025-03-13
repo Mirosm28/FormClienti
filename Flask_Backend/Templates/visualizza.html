@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Clienti</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        a, button {
+            display: inline-block;
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 6px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        button {
+            background-color: #DC3545;
+        }
+        a:hover, button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Elenco Clienti Registrati</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data di nascita</th>
+                <th>Sesso</th>
+                <th>Altezza (cm)</th>
+                <th>Peso (kg)</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Obiettivi</th>
+                <th>Livello Esperienza</th>
+                <th>Lavoro</th>
+                <th>Frequenza Allenamento</th>
+                <th>Ore di Sonno</th>
+                <th>Dieta</th>
+                <th>Patologie</th>
+                <th>Tipologia Allenamento</th>
+                <th>Allenamenti Settimanali</th>
+                <th>Durata Sessione</th>
+                <th>Giorni Preferiti</th>
+                <th>Note</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clienti %}
+            <tr>
+                <td>{{ cliente[0] }}</td>  <!-- ID -->
+                <td>{{ cliente[1] }}</td>  <!-- Nome -->
+                <td>{{ cliente[2] }}</td>  <!-- Data di nascita -->
+                <td>{{ cliente[3] }}</td>  <!-- Sesso -->
+                <td>{{ cliente[4] }}</td>  <!-- Altezza -->
+                <td>{{ cliente[5] }}</td>  <!-- Peso -->
+                <td>{{ cliente[6] }}</td>  <!-- Telefono -->
+                <td>{{ cliente[7] }}</td>  <!-- Email -->
+                <td>
+                    {% for obiettivo in cliente[8].split(",") %}
+                        {{ obiettivo }}<br>
+                    {% endfor %}
+                </td>  <!-- Obiettivi -->
+                <td>{{ cliente[9] }}</td>  <!-- Livello Esperienza -->
+                <td>{{ cliente[10] }}</td> <!-- Lavoro -->
+                <td>{{ cliente[11] }}</td> <!-- Frequenza Allenamento -->
+                <td>{{ cliente[12] }}</td> <!-- Ore di Sonno -->
+                <td>{{ cliente[13] }}</td> <!-- Dieta -->
+                <td>{{ cliente[14] }}</td> <!-- Patologie -->
+                <td>
+                    {% for allenamento in cliente[15].split(",") %}
+                        {{ allenamento }}<br>
+                    {% endfor %}
+                </td>  <!-- Tipologia Allenamento -->
+                <td>{{ cliente[16] }}</td>  <!-- Allenamenti Settimanali -->
+                <td>{{ cliente[17] }}</td>  <!-- Durata Sessione -->
+                <td>{{ cliente[18] }}</td>  <!-- Giorni Preferiti -->
+                <td>{{ cliente[19] }}</td>  <!-- Note -->
+                <td>
+                    <a href="/modifica/{{ cliente[0] }}">✏️ Modifica</a>
+                    <form method="POST" action="/elimina/{{ cliente[0] }}" onsubmit="return confirm('Sei sicuro di voler eliminare questo cliente?');">
+                        <button type="submit">🗑️ Elimina</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/">Torna al Form</a>
+
+</body>
+</html>

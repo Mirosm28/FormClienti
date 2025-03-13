@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifica Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Modifica Cliente</h2>
+
+    <form method="POST">
+        <label>Nome:</label>
+        <input type="text" name="nome" value="{{ cliente[1] }}" required>
+
+        <label>Data di nascita:</label>
+        <input type="date" name="data_nascita" value="{{ cliente[2] }}" required>
+
+        <label>Sesso:</label>
+        <select name="sesso">
+            <option value="M" {% if cliente[3] == "M" %}selected{% endif %}>Maschio</option>
+            <option value="F" {% if cliente[3] == "F" %}selected{% endif %}>Femmina</option>
+            <option value="Altro" {% if cliente[3] == "Altro" %}selected{% endif %}>Altro</option>
+        </select>
+
+        <label>Altezza (cm):</label>
+        <input type="number" name="altezza" value="{{ cliente[4] }}" required>
+
+        <label>Peso (kg):</label>
+        <input type="number" name="peso" value="{{ cliente[5] }}" required>
+
+        <label>Telefono:</label>
+        <input type="text" name="telefono" value="{{ cliente[6] }}" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{ cliente[7] }}" required>
+
+        <label>Obiettivi:</label>
+        <input type="text" name="obiettivi" value="{{ cliente[8] }}">
+
+        <label>Livello Esperienza:</label>
+        <input type="text" name="livello_esperienza" value="{{ cliente[9] }}">
+
+        <label>Lavoro:</label>
+        <input type="text" name="lavoro" value="{{ cliente[10] }}">
+
+        <label>Frequenza Allenamento:</label>
+        <input type="text" name="frequenza_allenamento" value="{{ cliente[11] }}">
+
+        <label>Ore di Sonno:</label>
+        <input type="number" name="sonno" value="{{ cliente[12] }}">
+
+        <label>Dieta:</label>
+        <input type="text" name="dieta" value="{{ cliente[13] }}">
+
+        <label>Patologie:</label>
+        <textarea name="patologie">{{ cliente[14] }}</textarea>
+
+        <label>Tipologia Allenamento:</label>
+        <input type="text" name="allenamento" value="{{ cliente[15] }}">
+
+        <label>Allenamenti Settimanali:</label>
+        <input type="number" name="allenamenti_settimanali" value="{{ cliente[16] }}">
+
+        <label>Durata Sessione:</label>
+        <input type="text" name="durata_sessione" value="{{ cliente[17] }}">
+
+        <label>Giorni Preferiti:</label>
+        <input type="text" name="giorni_preferiti" value="{{ cliente[18] }}">
+
+        <label>Note:</label>
+        <textarea name="note">{{ cliente[19] }}</textarea>
+
+        <button type="submit">Salva Modifiche</button>
+    </form>
+
+    <a href="/visualizza">Torna alla lista clienti</a>
+
+</body>
+</html>

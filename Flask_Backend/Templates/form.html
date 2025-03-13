@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Stili generali */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto; /* Abilita lo scrolling verticale */
+        }
+
+        .container {
+            width: 50%;
+            max-width: 600px; /* Impedisce che il form diventi troppo largo */
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px 0; /* Permette spazio per il margine sopra/sotto */
+        }
+
+        h2 {
+            text-align: center;
+            color: #243b55;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .section h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #007BFF;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            background: #007BFF;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Modulo Cliente</h2>
+
+        <form method="POST">
+            <!-- Sezione Dati Personali -->
+            <div class="section">
+                <h3>Dati Personali</h3>
+                <label>Nome e Cognome:</label>
+                <input type="text" name="nome" required>
+
+                <label>Data di nascita:</label>
+                <input type="date" name="data_nascita" required>
+
+                <label>Sesso:</label>
+                <select name="sesso">
+                    <option value="M">Maschio</option>
+                    <option value="F">Femmina</option>
+                    <option value="Altro">Altro</option>
+                </select>
+
+                <label>Telefono:</label>
+                <input type="text" name="telefono" required>
+
+                <label>Email:</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <!-- Sezione Dati Fisici -->
+            <div class="section">
+                <h3>Dati Fisici</h3>
+                <label>Altezza (cm):</label>
+                <input type="number" name="altezza" required>
+
+                <label>Peso (kg):</label>
+                <input type="number" name="peso" required>
+            </div>
+
+            <!-- Sezione Obiettivi -->
+            <div class="section">
+                <h3>Obiettivi</h3>
+                <label>Obiettivi (separati da virgola):</label>
+                <input type="text" name="obiettivi">
+            </div>
+
+            <!-- Sezione Allenamento -->
+            <div class="section">
+                <h3>Allenamento</h3>
+                <label>Frequenza Allenamento:</label>
+                <input type="text" name="frequenza_allenamento">
+
+                <label>Livello Esperienza:</label>
+                <select name="livello_esperienza">
+                <option value="Principiante">Principiante</option>
+                <option value="Intermedio">Intermedio</option>
+                <option value="Avanzato">Avanzato</option>
+                </select>
+
+                <label>Tipologia Allenamento:</label>
+                <input type="text" name="allenamento">
+
+                <label>Allenamenti Settimanali:</label>
+                <input type="number" name="allenamenti_settimanali">
+
+                <label>Durata Sessione:</label>
+                <input type="text" name="durata_sessione">
+
+                <label>Giorni Preferiti:</label>
+                <input type="text" name="giorni_preferiti">
+            </div>
+
+            <!-- Sezione Salute e Note -->
+            <div class="section">
+                <h3>Salute e Note</h3>
+                <label>Ore di Sonno:</label>
+                <input type="number" name="sonno">
+
+                <label>Dieta:</label>
+                <input type="text" name="dieta">
+
+                <label>Patologie:</label>
+                <textarea name="patologie"></textarea>
+
+                <label>Note Aggiuntive:</label>
+                <textarea name="note"></textarea>
+            </div>
+
+            <button type="submit">Invia Dati</button>
+        </form>
+    </div>
+
+</body>
+</html>
